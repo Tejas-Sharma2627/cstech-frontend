@@ -40,8 +40,8 @@ const FormData = () => {
   };
   const handleEditSubmit=async(e)=>{
     e.preventDefault();
-    const res = await axios.post(
-      `http://localhost:8080/edit?name=${userEdit.name}&email=${userEdit.email}`
+    const res = await axios.put(
+      `http://localhost:8080/edit?name=${userEdit.name}&email=${userEdit.email}&salary=${userEdit.salary}&desig=${userEdit.desig}`
     );
     setEditStatus(false);
     setUserEdit({
@@ -50,10 +50,11 @@ const FormData = () => {
     salary: null,
     desig: "",
     })
+    console.log("Success")
   }
   const handleDelete = async (e) => {
     e.preventDefault();
-    const res = await axios.post(
+    const res = await axios.delete(
       `http://localhost:8080/delete?name=${searchdata.email}&email=${searchdata.email}`
     );
     window.alert("Data Deleted");
